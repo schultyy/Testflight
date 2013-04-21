@@ -45,17 +45,33 @@ namespace Testflight.ConsoleRunner
                 if (string.IsNullOrEmpty(configFile.Target))
                     throw new ArgumentNullException("Target can not be null or empty");
 
+                if (string.IsNullOrEmpty(configFile.BaseDirectory))
+                    throw new ArgumentNullException("Base directory can not be null or empty");
+
                 Console.WriteLine(string.Format("Solution file = {0}", configFile.SolutionFile));
                 Console.WriteLine(string.Format("Build configuration = {0}", configFile.BuildConfiguration));
+                Console.WriteLine(string.Format("Base directory = {0}", configFile.BaseDirectory));
                 Console.WriteLine(string.Format("Target = {0}", configFile.Target));
 
                 var logger = new Logger();
 
                 var msBuild = new MSBuild();
 
+                var filesystemProvider = new FilesystemProvider();
+
+                var publisher = new BuildPublisher(filesystemProvider);
+
                 var builder = new Builder(logger, msBuild);
 
-                Console.WriteLine("Result {0}", builder.Run(configFile.SolutionFile, configFile.BuildConfiguration, configFile.Target));
+                var baseDirectory = Path.GetFullPath(configFile.BaseDirectory);
+
+                var solutionFile = Path.Combine(baseDirectory, configFile.SolutionFile);
+
+                var buildWasSuccessfull = builder.Run(solutionFile, configFile.BuildConfiguration, configFile.Target);
+
+                if (buildWasSuccessfull)
+                    publisher.PublishPackages(Path.Combine(baseDirectory, "bin", "Debug"),
+                                              Path.Combine(baseDirectory, "bin", "Debug", "package"));
 
                 var logFilename = Path.Combine("Log",
                                                string.Format("{0}_{1}.xml", configFile.Name,

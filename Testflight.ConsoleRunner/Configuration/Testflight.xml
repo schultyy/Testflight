@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <UserConfiguration>
   <Name>Testflight CI</Name>
-  <SolutionFile>..\..\..\Testflight.Dummy\Testflight.Dummy.csproj</SolutionFile>
+  <BaseDirectory>..\..\..\Testflight.Dummy\</BaseDirectory>
+  <SolutionFile>Testflight.Dummy.csproj</SolutionFile>
   <BuildConfiguration>Release</BuildConfiguration>
   <Target>Build</Target>
+  <PublishDirectory>Publish</PublishDirectory>
 </UserConfiguration>

@@ -15,7 +15,7 @@ namespace Testflight.Core
         public IFilesystemProvider FilesystemProvider { get; private set; }
 
 
-        public void PublishPackages(string packagesDirectory, string publishDirectory)
+        public void PublishPackages(string packagesDirectory, string publishDirectory, string[] patterns = null)
         {
             if (string.IsNullOrEmpty(packagesDirectory))
                 throw new ArgumentNullException("packagesDirectory");
@@ -23,7 +23,11 @@ namespace Testflight.Core
             if (string.IsNullOrEmpty(publishDirectory))
                 throw new ArgumentNullException("publishDirectory");
 
-            FilesystemProvider.Copy(packagesDirectory, publishDirectory);
+            if (patterns == null)
+                patterns = new[] { "*.*" };
+
+            foreach (var pattern in patterns)
+                FilesystemProvider.Copy(packagesDirectory, publishDirectory, pattern);
         }
     }
 }

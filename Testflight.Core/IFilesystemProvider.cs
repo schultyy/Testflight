@@ -7,6 +7,6 @@ namespace Testflight.Core
 {
     public interface IFilesystemProvider
     {
-        void Copy(string sourceDirectory, string destinationDirectory);
+        void Copy(string sourceDirectory, string destinationDirectory, string pattern);
     }
 }

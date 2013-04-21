@@ -15,6 +15,9 @@ namespace Testflight.Test
 
         private BuildPublisher publisher;
 
+        const string packagesDirectory = "Packages";
+        const string publishDirectory = "Publish";
+
         [SetUp]
         public void Setup()
         {
@@ -45,11 +48,22 @@ namespace Testflight.Test
         [Test]
         public void CopyPackages()
         {
-            const string packagesDirectory = "Packages";
-            const string publishDirectory = "Publish";
             publisher.PublishPackages(packagesDirectory, publishDirectory);
 
-            filesystemProviderMock.Verify(c => c.Copy(It.Is<string>(s => s == packagesDirectory), It.Is<string>(s => s == publishDirectory)));
+            filesystemProviderMock.Verify(c => c.Copy(It.Is<string>(s => s == packagesDirectory), It.Is<string>(s => s == publishDirectory), "*.*"));
+        }
+
+        [Test]
+        public void CopyPackagesWithPattern()
+        {
+            var filePatterns = new[] { "*.exe", "*.dll", "*.xml" };
+            publisher.PublishPackages(packagesDirectory, publishDirectory, filePatterns);
+
+            foreach (var filePattern in filePatterns)
+            {
+                string pattern = filePattern;
+                filesystemProviderMock.Verify(c => c.Copy(It.Is<string>(s => s == packagesDirectory), It.Is<string>(s => s == publishDirectory), It.Is<string>(s => s == pattern)));
+            }
         }
     }
 }

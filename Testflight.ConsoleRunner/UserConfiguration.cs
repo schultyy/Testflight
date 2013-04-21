@@ -10,6 +10,8 @@ namespace Testflight.ConsoleRunner
     {
         public string Name { get; set; }
 
+        public string BaseDirectory { get; set; }
+
         public string SolutionFile { get; set; }
 
         public BuildConfiguration BuildConfiguration { get; set; }
