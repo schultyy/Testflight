@@ -5,6 +5,7 @@ using System.Text;
 using Moq;
 using NUnit.Framework;
 using Testflight.Core;
+using Testflight.Core.Build;
 
 namespace Testflight.Test
 {

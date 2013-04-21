@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Testflight.Core;
+using Testflight.Core.Build;
 
 namespace Testflight.ConsoleRunner
 {

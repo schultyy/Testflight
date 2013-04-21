@@ -43,19 +43,19 @@
     <Compile Include="..\SolutionProperties.cs">
       <Link>SolutionProperties.cs</Link>
     </Compile>
-    <Compile Include="BuildConfiguration.cs" />
-    <Compile Include="Builder.cs" />
-    <Compile Include="BuildPublisher.cs" />
-    <Compile Include="BuildResult.cs" />
+    <Compile Include="Publish\BuildPublisher.cs" />
+    <Compile Include="Build\BuildResult.cs" />
+    <Compile Include="Build\BuildConfiguration.cs" />
+    <Compile Include="Build\Builder.cs" />
     <Compile Include="Categories.cs" />
-    <Compile Include="FilesystemProvider.cs" />
-    <Compile Include="IBuilderCapability.cs" />
-    <Compile Include="IBuildResult.cs" />
-    <Compile Include="IFilesystemProvider.cs" />
+    <Compile Include="Publish\FilesystemProvider.cs" />
+    <Compile Include="Build\IBuilderCapability.cs" />
+    <Compile Include="Build\IBuildResult.cs" />
+    <Compile Include="Publish\IFilesystemProvider.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="MSBuild.cs" />
+    <Compile Include="Build\MSBuild.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
