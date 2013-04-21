@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builder.cs" />
+    <Compile Include="BuildPublisher.cs" />
+    <Compile Include="FilesystemProvider.cs" />
     <Compile Include="IBuilderCapability.cs" />
+    <Compile Include="IFilesystemProvider.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MSBuild.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
