@@ -16,7 +16,7 @@ namespace Testflight.Core
             this.BuilderCapability = builderCapability;
         }
 
-        public void Run(string solutionFile, BuildConfiguration configuration = BuildConfiguration.Release, string target = "Build")
+        public bool Run(string solutionFile, BuildConfiguration configuration = BuildConfiguration.Release, string target = "Build")
         {
             if (string.IsNullOrEmpty(solutionFile))
                 throw new ArgumentNullException("solutionFile");
@@ -31,6 +31,8 @@ namespace Testflight.Core
 
             if (!string.IsNullOrEmpty(results.StdError))
                 Logger.Error(results.StdError);
+
+            return results.ExitCode == 0;
         }
     }
 

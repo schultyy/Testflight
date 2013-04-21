@@ -14,5 +14,6 @@ namespace Testflight.Core
     {
         string StdOut { get; }
         string StdError { get; }
+        int ExitCode { get; set; }
     }
 }

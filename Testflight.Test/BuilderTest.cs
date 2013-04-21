@@ -61,7 +61,7 @@ namespace Testflight.Test
             builder.Run("Test.sln");
 
             builderMock.Verify(c => c.Call(It.Is<string>(sln => sln == "Test.sln"),
-                It.Is<BuildConfiguration>(bc => bc == BuildConfiguration.Release)));
+                                           It.Is<BuildConfiguration>(bc => bc == BuildConfiguration.Release)));
         }
 
         [Test]
@@ -99,6 +99,30 @@ namespace Testflight.Test
             builder.Run("Test.sln");
 
             loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Error")));
+        }
+
+        [Test]
+        public void ExitCodeSuccess()
+        {
+            builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
+                .Returns(() => new BuildResult
+                                   {
+                                       ExitCode = 0
+                                   });
+
+            Assert.IsTrue(builder.Run("Test.sln"));
+        }
+
+        [Test]
+        public void ExitCodeFailure()
+        {
+            builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
+                .Returns(() => new BuildResult
+                {
+                    ExitCode = 5
+                });
+
+            Assert.IsFalse(builder.Run("Test.sln"));
         }
     }
 }
