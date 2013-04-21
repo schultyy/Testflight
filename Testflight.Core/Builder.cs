@@ -7,18 +7,26 @@ namespace Testflight.Core
 {
     public class Builder
     {
-        public string Path { get; set; }
+        
 
         public ILogger Logger { get; set; }
+        public IBuilderCapability BuilderCapability { get; set; }
 
-        public Builder(ILogger logger)
+        public Builder(ILogger logger, IBuilderCapability builderCapability)
         {
-            Path = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe";
+            this.Logger = logger;
+            this.BuilderCapability = builderCapability;
         }
 
         public void Run(string solutionFile, BuildConfiguration configuration = BuildConfiguration.Release, string target = "Build")
         {
+            if (string.IsNullOrEmpty(solutionFile))
+                throw new ArgumentNullException("solutionFile");
 
+            if (string.IsNullOrEmpty(target))
+                throw new ArgumentNullException("target");
+
+            BuilderCapability.Call(solutionFile, configuration);
         }
     }
 

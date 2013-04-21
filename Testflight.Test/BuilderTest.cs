@@ -22,13 +22,19 @@ namespace Testflight.Test
         {
             loggerMock = new Mock<ILogger>();
             builderMock = new Mock<IBuilderCapability>();
-            builder = new Builder(loggerMock.Object);
+            builder = new Builder(loggerMock.Object, builderMock.Object);
         }
 
         [Test]
         public void LoggerIsSet()
         {
             Assert.AreEqual(loggerMock.Object, builder.Logger);
+        }
+
+        [Test]
+        public void BuilderCapabilityIsSet()
+        {
+            Assert.AreEqual(builderMock.Object, builder.BuilderCapability);
         }
 
         [Test]
@@ -39,6 +45,7 @@ namespace Testflight.Test
         }
 
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void RunBuilderTargetNull()
         {
             builder.Run("blah", BuildConfiguration.Release, null);

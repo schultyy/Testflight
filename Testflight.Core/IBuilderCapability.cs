@@ -7,6 +7,12 @@ namespace Testflight.Core
 {
     public interface IBuilderCapability
     {
-        void Call(string solutionFile, BuildConfiguration buildConfiguration);
+        IBuildResult Call(string solutionFile, BuildConfiguration buildConfiguration);
+    }
+
+    public interface IBuildResult
+    {
+        string StdOut { get; }
+        string StdError { get; }
     }
 }
