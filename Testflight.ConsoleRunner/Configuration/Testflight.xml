@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserConfiguration>
+  <Name>Testflight CI</Name>
+  <SolutionFile>..\..\..\Testflight.sln</SolutionFile>
+  <BuildConfiguration>Release</BuildConfiguration>
+  <Target>Build</Target>
+</UserConfiguration>
