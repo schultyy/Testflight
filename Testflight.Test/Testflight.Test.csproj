@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionProperties.cs">
+      <Link>SolutionProperties.cs</Link>
+    </Compile>
     <Compile Include="BuilderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BuildPublisherTest.cs" />

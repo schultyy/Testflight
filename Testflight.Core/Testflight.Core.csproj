@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionProperties.cs">
+      <Link>SolutionProperties.cs</Link>
+    </Compile>
     <Compile Include="BuildConfiguration.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="BuildPublisher.cs" />
