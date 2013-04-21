@@ -35,19 +35,4 @@ namespace Testflight.Core
             return results.ExitCode == 0;
         }
     }
-
-    public interface ILogger
-    {
-        void Error(string errorMessage);
-        void Info(string infoMessage);
-        void WriteToFile(string filename);
-    }
-
-
-    public enum BuildConfiguration
-    {
-        Debug,
-        Release
-    }
-
 }

@@ -40,11 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildConfiguration.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="BuildPublisher.cs" />
+    <Compile Include="BuildResult.cs" />
+    <Compile Include="Categories.cs" />
     <Compile Include="FilesystemProvider.cs" />
     <Compile Include="IBuilderCapability.cs" />
+    <Compile Include="IBuildResult.cs" />
     <Compile Include="IFilesystemProvider.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="LogEntry.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="MSBuild.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
