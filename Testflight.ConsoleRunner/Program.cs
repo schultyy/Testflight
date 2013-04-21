@@ -66,6 +66,9 @@ namespace Testflight.ConsoleRunner
                 if (!Directory.Exists("Log"))
                     Directory.CreateDirectory("Log");
                 logger.WriteToFile(logFilename);
+#if DEBUG
+                Console.ReadLine();
+#endif
             }
             catch (Exception exc)
             {

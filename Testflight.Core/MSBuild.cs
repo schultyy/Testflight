@@ -31,7 +31,6 @@ namespace Testflight.Core
                                                       FileName = Path,
                                                       Arguments = arguments,
                                                       UseShellExecute = false,
-                                                      CreateNoWindow = true,
                                                       RedirectStandardError = true,
                                                       RedirectStandardOutput = true
                                                   }

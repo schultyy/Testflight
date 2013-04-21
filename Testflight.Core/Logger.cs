@@ -56,14 +56,15 @@ namespace Testflight.Core
         Error
     }
 
-    internal class LogEntry
+    [Serializable]
+    public class LogEntry
     {
-        internal LogEntry()
+        public LogEntry()
         {
             TimeStamp = DateTime.Now;
         }
 
-        public DateTime TimeStamp { get; private set; }
+        public DateTime TimeStamp { get; set; }
 
         public string Message { get; set; }
 
