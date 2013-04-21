@@ -46,8 +46,13 @@ namespace Testflight.Core
         }
     }
 
-    class BuildResult : IBuildResult
+    public class BuildResult : IBuildResult
     {
+        public BuildResult()
+        {
+
+        }
+
         public string StdOut { get; set; }
         public string StdError { get; set; }
     }

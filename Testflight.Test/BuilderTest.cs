@@ -22,6 +22,10 @@ namespace Testflight.Test
         {
             loggerMock = new Mock<ILogger>();
             builderMock = new Mock<IBuilderCapability>();
+
+            builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
+                .Returns(() => new BuildResult());
+
             builder = new Builder(loggerMock.Object, builderMock.Object);
         }
 
@@ -58,6 +62,43 @@ namespace Testflight.Test
 
             builderMock.Verify(c => c.Call(It.Is<string>(sln => sln == "Test.sln"),
                 It.Is<BuildConfiguration>(bc => bc == BuildConfiguration.Release)));
+        }
+
+        [Test]
+        public void LogStdoutAfterRun()
+        {
+            #region Preface
+
+            builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
+                .Returns(() => new BuildResult
+                                   {
+                                       StdOut = "Stdout"
+                                   });
+
+            #endregion
+
+            builder.Run("Test.sln");
+
+            loggerMock.Verify(c => c.Info(It.Is<string>(s => s == "Stdout")));
+            loggerMock.Verify(c => c.Error(It.IsAny<string>()), Times.Never());
+        }
+
+        [Test]
+        public void LogStdErrAfterRun()
+        {
+            #region Preface
+
+            builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
+                .Returns(() => new BuildResult
+                                   {
+                                       StdError = "Error"
+                                   });
+
+            #endregion
+
+            builder.Run("Test.sln");
+
+            loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Error")));
         }
     }
 }

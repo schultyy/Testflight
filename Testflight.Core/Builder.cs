@@ -7,8 +7,6 @@ namespace Testflight.Core
 {
     public class Builder
     {
-        
-
         public ILogger Logger { get; set; }
         public IBuilderCapability BuilderCapability { get; set; }
 
@@ -26,12 +24,20 @@ namespace Testflight.Core
             if (string.IsNullOrEmpty(target))
                 throw new ArgumentNullException("target");
 
-            BuilderCapability.Call(solutionFile, configuration);
+            var results = BuilderCapability.Call(solutionFile, configuration);
+
+            if (!string.IsNullOrEmpty(results.StdOut))
+                Logger.Info(results.StdOut);
+
+            if (!string.IsNullOrEmpty(results.StdError))
+                Logger.Error(results.StdError);
         }
     }
 
     public interface ILogger
     {
+        void Error(string errorMessage);
+        void Info(string infoMessage);
     }
 
 
