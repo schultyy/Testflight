@@ -40,7 +40,7 @@ namespace Testflight.Core
 
             results.StdError = process.StandardError.ReadToEnd();
             results.StdOut = process.StandardOutput.ReadToEnd();
-
+            results.ExitCode = process.ExitCode;
             return results;
         }
     }
