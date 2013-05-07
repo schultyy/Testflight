@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Testflight.Core;
 using Testflight.Core.Build;
+using Testflight.Core.Configuration;
 using Testflight.Core.Publish;
 
 namespace Testflight.ConsoleRunner
