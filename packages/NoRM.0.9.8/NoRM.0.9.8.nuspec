@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>NoRM</id>
+    <version>0.9.8</version>
+    <title>NoRM</title>
+    <authors>Andrew Theken</authors>
+    <owners>Andrew Theken</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NoRM (http://normproject.org) is a .NET driver for the document database MongoDB</description>
+    <summary>NoRM (http://normproject.org) is a .NET driver for the document database MongoDB</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+  </metadata>
+</package>
