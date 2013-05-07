@@ -1,6 +1,6 @@
-using Testflight.Core.Build;
+using TestFlight.Shared;
 
-namespace Testflight.Core.Configuration
+namespace TestFlight.Configuration
 {
     public class UserConfiguration
     {

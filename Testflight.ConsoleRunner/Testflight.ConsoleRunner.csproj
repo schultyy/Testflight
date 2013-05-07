@@ -50,9 +50,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestFlight.Configuration\TestFlight.Configuration.csproj">
+      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
+      <Name>TestFlight.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
+      <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
+      <Name>TestFlight.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

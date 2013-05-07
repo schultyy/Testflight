@@ -43,11 +43,8 @@
     <Compile Include="..\SolutionProperties.cs">
       <Link>SolutionProperties.cs</Link>
     </Compile>
-    <Compile Include="Configuration\Project.cs" />
-    <Compile Include="Configuration\UserConfiguration.cs" />
     <Compile Include="Publish\BuildPublisher.cs" />
     <Compile Include="Build\BuildResult.cs" />
-    <Compile Include="Build\BuildConfiguration.cs" />
     <Compile Include="Build\Builder.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="Publish\FilesystemProvider.cs" />
@@ -59,6 +56,15 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Build\MSBuild.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
+      <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
+      <Name>TestFlight.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

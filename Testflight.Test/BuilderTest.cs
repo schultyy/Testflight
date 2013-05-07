@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Moq;
 using NUnit.Framework;
+using TestFlight.Shared;
 using Testflight.Core;
 using Testflight.Core.Build;
 
