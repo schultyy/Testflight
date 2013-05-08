@@ -6,28 +6,51 @@ using System.Web;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
+using TestFlight.Configuration;
 
 namespace Testflight.Web
 {
-    public interface IMongoSession : IDisposable
+    public interface IMongoSession
     {
+        void Insert<T>(T item)
+            where T : class;
+
+        IEnumerable<T> GetAll<T>();
     }
 
     public class MongoSession : IMongoSession
     {
-        private string _connectionString;
-
         private MongoServer server;
+
+        private MongoDatabase database;
 
         public MongoSession()
         {
             //set this connection as you need. This is left here as an example, but you could, if you wanted,
-            _connectionString = "mongodb://127.0.0.1/MyDatabase?strict=false";
+            //_connectionString = "mongodb://127.0.0.1/MyDatabase?strict=false";
+            var client = new MongoClient("mongodb://localhost:27017");
+
+            server = client.GetServer();
+
+            database = server.GetDatabase("Testflight");
         }
 
-        public void Dispose()
+        public void Insert<T>(T item)
+            where T : class
         {
-            server.Disconnect();
+            if (item == null)
+                throw new ArgumentNullException("item");
+
+            server.Connect();
+
+            var projectCollection = database.GetCollection<Project>(typeof(T).Name);
+            projectCollection.Insert(item);
+        }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            var result = database.GetCollection<T>(typeof(T).Name).FindAll();
+            return result.ToArray();
         }
     }
 }

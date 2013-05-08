@@ -16,13 +16,13 @@ namespace Testflight.Web.Controllers
             this.session = session;
         }
 
-
         //
         // GET: /Project/
 
         public ActionResult Index()
         {
-            return View();
+            var resultSet = session.GetAll<Project>();
+            return View(resultSet);
         }
 
         //
@@ -51,6 +51,9 @@ namespace Testflight.Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+
+                session.Insert(project);
+
                 return RedirectToAction("Index");
             }
             catch
