@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Objects;
 using System.Linq;
 using System.Web;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
@@ -16,6 +17,7 @@ namespace Testflight.Web
             where T : class;
 
         IEnumerable<T> GetAll<T>();
+        T GetById<T>(ObjectId id);
     }
 
     public class MongoSession : IMongoSession
@@ -51,6 +53,14 @@ namespace Testflight.Web
         {
             var result = database.GetCollection<T>(typeof(T).Name).FindAll();
             return result.ToArray();
+        }
+
+        public T GetById<T>(ObjectId id)
+        {
+            if (id == null)
+                throw new ArgumentNullException("id");
+
+            return database.GetCollection<T>(typeof(T).Name).FindOne(Query.EQ("Id", id));
         }
     }
 }

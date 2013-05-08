@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MongoDB.Bson;
 using TestFlight.Configuration;
 
 namespace Testflight.Web.Controllers
@@ -28,9 +29,10 @@ namespace Testflight.Web.Controllers
         //
         // GET: /Project/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(ObjectId id)
         {
-            return View();
+            var project = session.GetById<Project>(id);
+            return View(project);
         }
 
         //
