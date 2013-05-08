@@ -9,6 +9,14 @@ namespace Testflight.Web.Controllers
 {
     public class ProjectController : Controller
     {
+        private IMongoSession session;
+
+        public ProjectController(IMongoSession session)
+        {
+            this.session = session;
+        }
+
+
         //
         // GET: /Project/
 

@@ -9,7 +9,11 @@ using MongoDB.Driver.Linq;
 
 namespace Testflight.Web
 {
-    public class MongoSession<T> : IDisposable
+    public interface IMongoSession : IDisposable
+    {
+    }
+
+    public class MongoSession : IMongoSession
     {
         private string _connectionString;
 
