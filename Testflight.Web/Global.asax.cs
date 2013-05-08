@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.Practices.ServiceLocation;
+using MongoDB.Bson;
+using Testflight.Web.Binders;
 
 namespace Testflight.Web
 {
@@ -23,6 +25,7 @@ namespace Testflight.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(ObjectId), new ObjectIdBinder());
             AuthConfig.RegisterAuth();
             Bootstrapper.Initialise();
         }
