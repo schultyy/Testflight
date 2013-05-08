@@ -1,0 +1,59 @@
+﻿@model TestFlight.Configuration.UserConfiguration
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UserConfiguration</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BaseDirectory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BaseDirectory)
+            @Html.ValidationMessageFor(model => model.BaseDirectory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SolutionFile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SolutionFile)
+            @Html.ValidationMessageFor(model => model.SolutionFile)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Target)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Target)
+            @Html.ValidationMessageFor(model => model.Target)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
