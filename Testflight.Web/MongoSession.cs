@@ -60,7 +60,7 @@ namespace Testflight.Web
             if (id == null)
                 throw new ArgumentNullException("id");
 
-            return database.GetCollection<T>(typeof(T).Name).FindOne(Query.EQ("Id", id));
+            return database.GetCollection<T>(typeof(T).Name).FindOne(Query.EQ("_id", id));
         }
     }
 }
