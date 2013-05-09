@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using TestFlight.Shared;
 
-namespace TestFlight.Configuration
+namespace TestFlight.Model
 {
     public class Configuration
     {

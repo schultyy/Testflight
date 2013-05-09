@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
-using TestFlight.Configuration;
+using TestFlight.Model;
 using Testflight.Core;
 using Testflight.Core.Build;
 using Testflight.Core.Publish;

@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using Microsoft.Practices.Unity;
 using MongoDB.Bson;
-using TestFlight.Configuration;
+using TestFlight.Model;
 using Testflight.Core;
 using Testflight.Core.Build;
 using Testflight.Core.Publish;
 using Testflight.DataAccess;
+using Testflight.ErrorHandling;
 
 namespace Testflight.Scheduling
 {
@@ -69,6 +70,11 @@ namespace Testflight.Scheduling
                                               Path.Combine(baseDirectory, "bin", "Debug", "package"));
                 return;
             }
+
+            var message = string.Format("Configuration is not valid:\n{0}",
+                string.Join("\n", validationResults.Select(c => c.ErrorMessage).ToArray()));
+
+            throw new ConfigurationValidationException(message);
         }
     }
 }

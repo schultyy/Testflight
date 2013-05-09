@@ -3,7 +3,7 @@ using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
-using TestFlight.Configuration;
+using TestFlight.Model;
 
 namespace Testflight.DataAccess
 {

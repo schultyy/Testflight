@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MongoDB.Bson;
-using TestFlight.Configuration;
+using TestFlight.Model;
 using TestFlight.Shared;
 using Testflight.DataAccess;
 

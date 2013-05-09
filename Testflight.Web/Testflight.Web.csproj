@@ -314,10 +314,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestFlight.Configuration\TestFlight.Configuration.csproj">
-      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
-      <Name>TestFlight.Configuration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
@@ -325,6 +321,10 @@
     <ProjectReference Include="..\Testflight.DataAccess\Testflight.DataAccess.csproj">
       <Project>{A3E75E36-0B0E-474C-B1D1-5B5A432F9397}</Project>
       <Name>Testflight.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
+      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
+      <Name>TestFlight.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Testflight.Scheduling\Testflight.Scheduling.csproj">
       <Project>{FAA0D1C8-4367-4625-8618-DD54DC212EE2}</Project>

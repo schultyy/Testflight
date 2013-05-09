@@ -55,10 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestFlight.Configuration\TestFlight.Configuration.csproj">
-      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
-      <Name>TestFlight.Configuration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
@@ -66,6 +62,14 @@
     <ProjectReference Include="..\Testflight.DataAccess\Testflight.DataAccess.csproj">
       <Project>{A3E75E36-0B0E-474C-B1D1-5B5A432F9397}</Project>
       <Name>Testflight.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Testflight.ErrorHandling\Testflight.ErrorHandling.csproj">
+      <Project>{78A704E9-50F2-49C8-B7D2-E1D407B8FDF0}</Project>
+      <Name>Testflight.ErrorHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
+      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
+      <Name>TestFlight.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
       <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
