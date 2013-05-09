@@ -50,11 +50,15 @@ namespace Testflight.Web.Controllers
         {
             try
             {
-                configuration.ProjectId = ViewBag.ProjectId;
+                if (ModelState.IsValid)
+                {
+                    configuration.ProjectId = ViewBag.ProjectId;
 
-                session.Insert(configuration);
+                    session.Insert(configuration);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                return View(configuration);
             }
             catch
             {
