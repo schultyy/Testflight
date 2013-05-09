@@ -1,3 +1,39 @@
-﻿@{
+﻿@model List<Testflight.Web.Models.ProjectViewModel>
+@{
     ViewBag.Title = "Home";
 }
+<table>
+    <thead>
+        <tr>
+            <th>
+                Project
+            </th>
+            <th>
+                Configuration
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model)
+        {
+            foreach (var configuration in project.Configurations)
+            {
+            <tr>
+                <td>
+                    @project.Name
+                </td>
+                <td>
+                    @configuration.Name
+                </td>
+                <td>
+                    <button>
+                        Query build
+                    </button>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

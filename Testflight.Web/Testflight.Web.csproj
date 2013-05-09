@@ -194,6 +194,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ProjectViewModel.cs" />
     <Compile Include="MongoSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
