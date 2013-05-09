@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Objects;
+using System;
 using System.Linq;
-using System.Web;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
-using MongoDB.Driver.Linq;
 using TestFlight.Configuration;
 
-namespace Testflight.Web
+namespace Testflight.DataAccess
 {
     public interface IMongoSession
     {
@@ -52,7 +48,7 @@ namespace Testflight.Web
         public IQueryable<T> GetAll<T>()
         {
             var result = database.GetCollection<T>(typeof(T).Name).FindAll();
-            return result.AsQueryable();
+            return Queryable.AsQueryable<T>(result);
         }
 
         public T GetById<T>(ObjectId id)

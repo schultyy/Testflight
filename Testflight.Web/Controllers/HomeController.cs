@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MongoDB.Bson;
 using TestFlight.Configuration;
+using Testflight.DataAccess;
 using Testflight.Web.Models;
 
 namespace Testflight.Web.Controllers
@@ -32,6 +34,11 @@ namespace Testflight.Web.Controllers
             }
 
             return View(projects);
+        }
+
+        public ActionResult QueryBuild(ObjectId configurationId)
+        {
+            return View("Index");
         }
     }
 }

@@ -28,9 +28,7 @@
                     @configuration.Name
                 </td>
                 <td>
-                    <button>
-                        Query build
-                    </button>
+                    @Html.ActionLink("Query build", "QueryBuild", new { configurationId = configuration.Id })
                 </td>
             </tr>
             }

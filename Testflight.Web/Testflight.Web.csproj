@@ -195,7 +195,6 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
-    <Compile Include="MongoSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,7 +269,6 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Unity.Mvc4.README.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -323,6 +321,14 @@
     <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Testflight.DataAccess\Testflight.DataAccess.csproj">
+      <Project>{A3E75E36-0B0E-474C-B1D1-5B5A432F9397}</Project>
+      <Name>Testflight.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Testflight.Scheduling\Testflight.Scheduling.csproj">
+      <Project>{FAA0D1C8-4367-4625-8618-DD54DC212EE2}</Project>
+      <Name>Testflight.Scheduling</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
       <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>

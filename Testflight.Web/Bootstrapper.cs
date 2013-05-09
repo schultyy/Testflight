@@ -1,5 +1,7 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using Testflight.DataAccess;
+using Testflight.Scheduling;
 using Unity.Mvc4;
 
 namespace Testflight.Web
@@ -31,6 +33,7 @@ namespace Testflight.Web
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IMongoSession, MongoSession>();
+            container.RegisterInstance<IScheduler>(new Scheduler());
         }
     }
 }
