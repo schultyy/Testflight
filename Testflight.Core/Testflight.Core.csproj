@@ -46,21 +46,21 @@
     <Compile Include="Publish\BuildPublisher.cs" />
     <Compile Include="Build\BuildResult.cs" />
     <Compile Include="Build\Builder.cs" />
-    <Compile Include="Categories.cs" />
     <Compile Include="Publish\FilesystemProvider.cs" />
     <Compile Include="Build\IBuilderCapability.cs" />
     <Compile Include="Build\IBuildResult.cs" />
     <Compile Include="Publish\IFilesystemProvider.cs" />
     <Compile Include="ILogger.cs" />
-    <Compile Include="LogEntry.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Build\MSBuild.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
+      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
+      <Name>TestFlight.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
       <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
       <Name>TestFlight.Shared</Name>

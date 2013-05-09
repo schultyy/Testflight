@@ -1,6 +1,6 @@
 using System;
 
-namespace Testflight.Core
+namespace TestFlight.Model
 {
     [Serializable]
     public class LogEntry
