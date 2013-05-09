@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MongoDB.Bson;
 using TestFlight.Configuration;
+using TestFlight.Shared;
 
 namespace Testflight.Web.Controllers
 {
@@ -39,6 +40,12 @@ namespace Testflight.Web.Controllers
         public ActionResult Create(ObjectId projectId)
         {
             ViewBag.ProjectId = projectId;
+
+            var items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = BuildConfiguration.Debug.ToString(), Value = BuildConfiguration.Debug.ToString() });
+            items.Add(new SelectListItem { Text = BuildConfiguration.Release.ToString(), Value = BuildConfiguration.Release.ToString() });
+            ViewBag.BuildConfigurations = items;
             return View();
         }
 
@@ -56,7 +63,7 @@ namespace Testflight.Web.Controllers
 
                     session.Insert(configuration);
 
-                    return RedirectToAction("Details", "Project");
+                    return RedirectToAction("Details", "Project", new { id = configuration.ProjectId });
                 }
                 return View(configuration);
             }

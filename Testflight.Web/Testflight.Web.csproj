@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Extensions\EnumDropDownList.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -321,6 +322,10 @@
     <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
+      <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
+      <Name>TestFlight.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
