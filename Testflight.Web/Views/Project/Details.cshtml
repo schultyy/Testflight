@@ -17,7 +17,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("New build configuration", "Create", "Configuration", new { projectId = Model.Id })
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("New build configuration", "Create", "Configuration", new { projectId = Model.Id }, null)
     @Html.ActionLink("Back to List", "Index")
 </p>
