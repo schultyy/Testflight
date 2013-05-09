@@ -32,6 +32,8 @@ namespace Testflight.Web.Controllers
         public ActionResult Details(ObjectId id)
         {
             var project = session.GetById<Project>(id);
+            ViewBag.ProjectConfigurations =
+                session.GetAll<Configuration>().Where(c => c.ProjectId == project.Id).ToArray();
             return View(project);
         }
 

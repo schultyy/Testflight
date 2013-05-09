@@ -52,11 +52,11 @@ namespace Testflight.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    configuration.ProjectId = ViewBag.ProjectId;
+                    //configuration.ProjectId = ViewBag.ProjectId;
 
                     session.Insert(configuration);
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", "Project");
                 }
                 return View(configuration);
             }

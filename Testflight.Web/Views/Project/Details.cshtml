@@ -13,7 +13,14 @@
         @Html.DisplayFor(model => model.Name)
     </div>
     <div class="display-label">
-        Configurations
+        <p>
+            Configurations</p>
+        <ul>
+            @foreach (var configuration in ViewBag.ProjectConfigurations)
+            {
+                <li>@configuration.Name</li>    
+            }
+        </ul>
     </div>
 </fieldset>
 <p>

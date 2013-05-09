@@ -16,7 +16,7 @@ namespace Testflight.Web
         void Insert<T>(T item)
             where T : class;
 
-        IEnumerable<T> GetAll<T>();
+        IQueryable<T> GetAll<T>();
         T GetById<T>(ObjectId id);
     }
 
@@ -49,10 +49,10 @@ namespace Testflight.Web
             projectCollection.Insert(item);
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IQueryable<T> GetAll<T>()
         {
             var result = database.GetCollection<T>(typeof(T).Name).FindAll();
-            return result.ToArray();
+            return result.AsQueryable();
         }
 
         public T GetById<T>(ObjectId id)
