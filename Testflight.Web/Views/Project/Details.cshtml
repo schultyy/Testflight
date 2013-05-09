@@ -12,9 +12,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
+    <div class="display-label">
+        Configurations
+    </div>
 </fieldset>
 <p>
-    @Html.ActionLink("New build configuration", "Create", "Configuration")
+    @Html.ActionLink("New build configuration", "Create", "Configuration", new { projectId = Model.Id })
     @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

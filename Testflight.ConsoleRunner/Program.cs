@@ -27,14 +27,14 @@ namespace Testflight.ConsoleRunner
 
             try
             {
-                UserConfiguration configFile = null;
+                Configuration configFile = null;
 
                 Console.WriteLine(string.Format("Reading configuration {0}", args.First()));
 
                 using (var reader = new StreamReader(args.First()))
                 {
-                    var deserializer = new XmlSerializer(typeof(UserConfiguration));
-                    configFile = deserializer.Deserialize(reader) as UserConfiguration;
+                    var deserializer = new XmlSerializer(typeof(Configuration));
+                    configFile = deserializer.Deserialize(reader) as Configuration;
                 }
 
                 if (configFile == null)

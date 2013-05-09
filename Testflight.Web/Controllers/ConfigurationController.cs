@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MongoDB.Bson;
+using TestFlight.Configuration;
 
 namespace Testflight.Web.Controllers
 {
@@ -34,8 +36,9 @@ namespace Testflight.Web.Controllers
         //
         // GET: /Configuration/Create
 
-        public ActionResult Create()
+        public ActionResult Create(ObjectId projectId)
         {
+            ViewBag.ProjectId = projectId;
             return View();
         }
 
@@ -43,11 +46,13 @@ namespace Testflight.Web.Controllers
         // POST: /Configuration/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Configuration configuration)
         {
             try
             {
-                // TODO: Add insert logic here
+                configuration.ProjectId = ViewBag.ProjectId;
+
+                session.Insert(configuration);
 
                 return RedirectToAction("Index");
             }

@@ -18,8 +18,6 @@ namespace Testflight.Web.Controllers
 
         public ActionResult Index()
         {
-            var projects = session.GetAll<Project>();
-            ViewBag.Projects = projects;
             return View();
         }
     }

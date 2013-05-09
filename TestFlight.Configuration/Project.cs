@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -11,7 +12,5 @@ namespace TestFlight.Configuration
 
         [Required(ErrorMessage = "Project name is required")]
         public string Name { get; set; }
-
-        public UserConfiguration[] Configurations { get; set; }
     }
 }
