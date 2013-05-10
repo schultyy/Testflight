@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{03AF5472-99B8-4DD5-AC17-DB755BC7A235}</ProjectGuid>
+    <ProjectGuid>{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Testflight.Test</RootNamespace>
-    <AssemblyName>Testflight.Test</AssemblyName>
+    <RootNamespace>Testflight.Logging</RootNamespace>
+    <AssemblyName>Testflight.Logging</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,13 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,25 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SolutionProperties.cs">
-      <Link>SolutionProperties.cs</Link>
-    </Compile>
-    <Compile Include="BuilderTest.cs" />
+    <Compile Include="DatabaseLogger.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BuildPublisherTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Testflight.Core\Testflight.Core.csproj">
-      <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
-      <Name>Testflight.Core</Name>
+    <ProjectReference Include="..\Testflight.DataAccess\Testflight.DataAccess.csproj">
+      <Project>{A3E75E36-0B0E-474C-B1D1-5B5A432F9397}</Project>
+      <Name>Testflight.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Testflight.Logging\Testflight.Logging.csproj">
-      <Project>{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}</Project>
-      <Name>Testflight.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestFlight.Shared\TestFlight.Shared.csproj">
-      <Project>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</Project>
-      <Name>TestFlight.Shared</Name>
+    <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
+      <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
+      <Name>TestFlight.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

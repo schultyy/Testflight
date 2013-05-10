@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testflight.ErrorHandling", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFlight.Model", "TestFlight.Model\TestFlight.Model.csproj", "{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testflight.Logging", "Testflight.Logging\Testflight.Logging.csproj", "{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,16 @@ Global
 		{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

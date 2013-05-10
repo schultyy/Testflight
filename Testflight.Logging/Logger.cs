@@ -1,18 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 using TestFlight.Model;
 
-namespace Testflight.Core
+namespace Testflight.Logging
 {
-    public class Logger : ILogger
+    public abstract class Logger : ILogger
     {
-        private readonly List<LogEntry> logEntries;
+        protected readonly List<LogEntry> logEntries;
 
-        public Logger()
+        protected Logger()
         {
             logEntries = new List<LogEntry>();
         }
@@ -37,17 +35,6 @@ namespace Testflight.Core
                                    Category = Categories.Info,
                                    Message = infoMessage
                                });
-        }
-
-        public void WriteToFile(string filename)
-        {
-            if (string.IsNullOrEmpty(filename))
-                throw new ArgumentNullException("filename");
-            using (var streamWriter = new StreamWriter(filename))
-            {
-                var serializer = new XmlSerializer(logEntries.GetType());
-                serializer.Serialize(streamWriter, logEntries.OrderBy(c => c.TimeStamp).ToList());
-            }
         }
     }
 }

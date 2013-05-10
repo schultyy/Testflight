@@ -54,6 +54,10 @@
       <Project>{7EC20CA0-1BAF-4785-ABFA-338AE316FFF3}</Project>
       <Name>Testflight.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Testflight.Logging\Testflight.Logging.csproj">
+      <Project>{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}</Project>
+      <Name>Testflight.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
       <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>
       <Name>TestFlight.Model</Name>

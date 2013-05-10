@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Moq;
 using NUnit.Framework;
 using TestFlight.Shared;
-using Testflight.Core;
 using Testflight.Core.Build;
+using Testflight.Logging;
 
 namespace Testflight.Test
 {

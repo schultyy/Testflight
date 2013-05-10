@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using TestFlight.Model;
-using Testflight.Core;
 using Testflight.Core.Build;
 using Testflight.Core.Publish;
+using Testflight.Logging;
 
 namespace Testflight.ConsoleRunner
 {
@@ -54,7 +54,7 @@ namespace Testflight.ConsoleRunner
                 Console.WriteLine(string.Format("Base directory = {0}", configFile.BaseDirectory));
                 Console.WriteLine(string.Format("Target = {0}", configFile.Target));
 
-                var logger = new Logger();
+                var logger = new FileLogger();
 
                 var msBuild = new MSBuild();
 
