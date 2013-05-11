@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MongoDB.Bson;
 using TestFlight.Model;
 using Testflight.DataAccess;
+using Testflight.Scheduling;
 using Testflight.Web.Models;
 
 namespace Testflight.Web.Controllers
@@ -14,9 +15,12 @@ namespace Testflight.Web.Controllers
     {
         private IMongoSession session;
 
-        public HomeController(IMongoSession session)
+        private IScheduler scheduler;
+
+        public HomeController(IMongoSession session, IScheduler scheduler)
         {
             this.session = session;
+            this.scheduler = scheduler;
         }
 
         public ActionResult Index()

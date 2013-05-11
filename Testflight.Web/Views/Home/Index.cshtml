@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Home";
 }
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("Scripts/Home.js")"></script>
+}
 <table>
     <thead>
         <tr>
@@ -10,6 +14,9 @@
             </th>
             <th>
                 Configuration
+            </th>
+            <th>
+                Build status
             </th>
             <th>
             </th>
@@ -27,8 +34,16 @@
                 <td>
                     @configuration.Name
                 </td>
+                <td class="build-status">
+                    <p id="status-running" style="display: none; color: green;">
+                        Running
+                    </p>
+                    <p id="status-not-running" style="display: none;">
+                        Idle
+                    </p>
+                </td>
                 <td>
-                    @Html.ActionLink("Query build", "QueryBuild", new { configurationId = configuration.Id })
+                    <a href="#" class="query-build-link" id="@configuration.Id">Query build</a>
                 </td>
             </tr>
             }
