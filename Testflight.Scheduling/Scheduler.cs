@@ -72,8 +72,8 @@ namespace Testflight.Scheduling
                                                                var buildWasSuccessfull = Builder.Run(solutionFile, configuration.BuildConfiguration, configuration.Target);
 
                                                                if (buildWasSuccessfull)
-                                                                   Publisher.PublishPackages(Path.Combine(baseDirectory, "bin", "Debug"),
-                                                                                             Path.Combine(baseDirectory, "bin", "Debug", "package"));
+                                                                   Publisher.PublishPackages(Path.Combine(baseDirectory, "bin", configuration.BuildConfiguration.ToString()),
+                                                                                             Path.Combine(baseDirectory, "bin", configuration.BuildConfiguration.ToString(), "package"));
                                                                return;
                                                            }
 
