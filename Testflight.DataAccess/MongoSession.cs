@@ -32,14 +32,14 @@ namespace Testflight.DataAccess
 
             server.Connect();
 
-            var projectCollection = database.GetCollection<Project>(typeof(T).Name);
-            projectCollection.Insert(item);
+            var collection = database.GetCollection<T>(typeof(T).Name);
+            collection.Insert(item);
         }
 
         public IQueryable<T> GetAll<T>()
         {
             var result = database.GetCollection<T>(typeof(T).Name).FindAll();
-            return Queryable.AsQueryable<T>(result);
+            return result.AsQueryable();
         }
 
         public T GetById<T>(ObjectId id)
