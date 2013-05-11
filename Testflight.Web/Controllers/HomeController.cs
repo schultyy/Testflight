@@ -42,7 +42,9 @@ namespace Testflight.Web.Controllers
 
         public ActionResult QueryBuild(ObjectId configurationId)
         {
-            return View("Index");
+            scheduler.QueueNew(configurationId);
+
+            return Json("OK", JsonRequestBehavior.AllowGet);
         }
     }
 }
