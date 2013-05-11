@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using TestFlight.Shared;
-using Testflight.Core.Build;
+using Testflight.Core;
 using Testflight.Logging;
 
 namespace Testflight.Test
