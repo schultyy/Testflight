@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DatabaseLogger.cs" />
     <Compile Include="FileLogger.cs" />
+    <Compile Include="IDatabaseLogger.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

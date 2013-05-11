@@ -78,8 +78,8 @@ namespace Testflight.Test
 
             builder.Run("Test.sln");
 
-            loggerMock.Verify(c => c.Info(It.Is<string>(s => s == "Stdout")));
-            loggerMock.Verify(c => c.Error(It.IsAny<string>()), Times.Never());
+            loggerMock.Verify(c => c.Info(It.IsAny<string>(), It.Is<string>(s => s == "Stdout")));
+            loggerMock.Verify(c => c.Error(It.IsAny<string>(), It.IsAny<string>()), Times.Never());
         }
 
         [Test]
@@ -97,7 +97,7 @@ namespace Testflight.Test
 
             builder.Run("Test.sln");
 
-            loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Error")));
+            loggerMock.Verify(c => c.Error(It.IsAny<string>(), It.Is<string>(s => s == "Error")));
         }
 
         [Test]

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildReport.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="LogEntry.cs" />
     <Compile Include="Project.cs" />

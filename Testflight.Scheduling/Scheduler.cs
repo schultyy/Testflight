@@ -15,11 +15,6 @@ using Testflight.Logging;
 
 namespace Testflight.Scheduling
 {
-    public interface IScheduler
-    {
-        IMongoSession Session { get; set; }
-    }
-
     public class Scheduler : IScheduler
     {
         [Dependency]
@@ -40,49 +35,76 @@ namespace Testflight.Scheduling
         [Dependency]
         public ILogger Logger { get; set; }
 
+        private Dictionary<ObjectId, Task> taskHandles;
+
         public Scheduler()
         {
-
+            taskHandles = new Dictionary<ObjectId, Task>();
         }
 
         public void QueueNew(ObjectId configurationId)
         {
+            if (configurationId == ObjectId.Empty)
+                throw new ArgumentException("Configuration Id can not be empty");
+
+            if (taskHandles.ContainsKey(configurationId))
+                throw new ArgumentException(string.Format("There is already a job running for configuration {0}", configurationId));
+
             var taskHandle = Task.Factory.StartNew(() =>
-                                      {
-                                          if (configurationId == ObjectId.Empty)
-                                              throw new ArgumentException("Configuration Id can not be empty");
+                                                       {
+                                                           var configuration = Session.GetById<Configuration>(configurationId);
 
-                                          var configuration = Session.GetById<Configuration>(configurationId);
+                                                           if (configuration == null)
+                                                               throw new ArgumentException(string.Format("No configuration with Id = {0} found", configurationId));
 
-                                          if (configuration == null)
-                                              throw new ArgumentException(string.Format("No configuration with Id = {0} found", configurationId));
+                                                           var validationResults = new List<ValidationResult>();
 
-                                          var validationResults = new List<ValidationResult>();
+                                                           if (Validator.TryValidateObject(configuration, new ValidationContext(configuration, null, null), validationResults))
+                                                           {
+                                                               var baseDirectory = Path.GetFullPath(configuration.BaseDirectory);
 
-                                          if (Validator.TryValidateObject(configuration, new ValidationContext(configuration, null, null), validationResults))
-                                          {
-                                              var baseDirectory = Path.GetFullPath(configuration.BaseDirectory);
+                                                               var solutionFile = Path.Combine(baseDirectory, configuration.SolutionFile);
 
-                                              var solutionFile = Path.Combine(baseDirectory, configuration.SolutionFile);
+                                                               var buildWasSuccessfull = Builder.Run(solutionFile, configuration.BuildConfiguration, configuration.Target);
 
-                                              var buildWasSuccessfull = Builder.Run(solutionFile, configuration.BuildConfiguration, configuration.Target);
+                                                               if (buildWasSuccessfull)
+                                                                   Publisher.PublishPackages(Path.Combine(baseDirectory, "bin", "Debug"),
+                                                                                             Path.Combine(baseDirectory, "bin", "Debug", "package"));
+                                                               return;
+                                                           }
 
-                                              if (buildWasSuccessfull)
-                                                  Publisher.PublishPackages(Path.Combine(baseDirectory, "bin", "Debug"),
-                                                                            Path.Combine(baseDirectory, "bin", "Debug", "package"));
-                                              return;
-                                          }
+                                                           var message = string.Format("Configuration is not valid:\n{0}",
+                                                               string.Join("\n", validationResults.Select(c => c.ErrorMessage).ToArray()));
 
-                                          var message = string.Format("Configuration is not valid:\n{0}",
-                                              string.Join("\n", validationResults.Select(c => c.ErrorMessage).ToArray()));
-
-                                          throw new ConfigurationValidationException(message);
-                                      }).ContinueWith(t =>
+                                                           throw new ConfigurationValidationException(message);
+                                                       }).ContinueWith(t =>
                                                         {
-                                                            if(t.Exception == null)
+                                                            if (t.Exception == null)
                                                             {
+                                                                Logger.Finished();
+                                                                return;
                                                             }
+                                                            Logger.Error("General", t.Exception);
+                                                            Logger.FinishedWithErrors();
                                                         });
+            taskHandles.Add(configurationId, taskHandle);
         }
+
+        public TaskInfo[] GetTasks()
+        {
+            return taskHandles.Select(c => new TaskInfo
+                                               {
+                                                   IsCompleted = c.Value.IsCompleted,
+                                                   ConfigurationId = c.Key
+                                               })
+                                .ToArray();
+        }
+    }
+
+    public class TaskInfo
+    {
+        public bool IsCompleted { get; set; }
+
+        public ObjectId ConfigurationId { get; set; }
     }
 }

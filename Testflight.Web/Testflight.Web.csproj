@@ -193,8 +193,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\UsersContext.cs" />
+    <Compile Include="Models\ExternalLogin.cs" />
+    <Compile Include="Models\LocalPasswordModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProjectViewModel.cs" />
+    <Compile Include="Models\RegisterExternalLoginModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +327,10 @@
     <ProjectReference Include="..\Testflight.DataAccess\Testflight.DataAccess.csproj">
       <Project>{A3E75E36-0B0E-474C-B1D1-5B5A432F9397}</Project>
       <Name>Testflight.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Testflight.Logging\Testflight.Logging.csproj">
+      <Project>{DC5C4184-13D0-4D59-AD66-6667B0B5D1A1}</Project>
+      <Name>Testflight.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestFlight.Model\TestFlight.Model.csproj">
       <Project>{A89BFC7E-FBE2-4524-973D-FC26BE180C4F}</Project>

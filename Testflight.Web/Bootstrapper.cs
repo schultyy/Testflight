@@ -3,6 +3,7 @@ using Microsoft.Practices.Unity;
 using Testflight.Core.Build;
 using Testflight.Core.Publish;
 using Testflight.DataAccess;
+using Testflight.Logging;
 using Testflight.Scheduling;
 using Unity.Mvc4;
 
@@ -38,6 +39,7 @@ namespace Testflight.Web
             container.RegisterType<IFilesystemProvider, FilesystemProvider>();
             container.RegisterType<IBuilderCapability, MSBuild>();
             container.RegisterType<Builder>();
+            container.RegisterType<ILogger, DatabaseLogger>(new PerThreadLifetimeManager());
             container.RegisterInstance<IScheduler>(new Scheduler());
         }
     }

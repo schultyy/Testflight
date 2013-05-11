@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Testflight.Logging
 {
-    public class FileLogger : Logger, IFileLogger
+    public class FileLogger : Logger
     {
         public void WriteToFile(string filename)
         {
@@ -18,6 +18,18 @@ namespace Testflight.Logging
                 var serializer = new XmlSerializer(logEntries.GetType());
                 serializer.Serialize(streamWriter, logEntries.OrderBy(c => c.TimeStamp).ToList());
             }
+        }
+
+        public override void Finished()
+        {
+            var logFilename = Path.Combine("Log",
+                                               string.Format("{0}.xml", DateTime.Now.ToString().Replace(":", "_")));
+            WriteToFile(logFilename);
+        }
+
+        public override void FinishedWithErrors()
+        {
+            Finished();
         }
     }
 }

@@ -15,5 +15,7 @@ namespace TestFlight.Model
         public string Message { get; set; }
 
         public Categories Category { get; set; }
+
+        public string Component { get; set; }
     }
 }
