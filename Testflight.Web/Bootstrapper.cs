@@ -40,7 +40,7 @@ namespace Testflight.Web
             container.RegisterType<IBuilderCapability, MSBuild>();
             container.RegisterType<Builder>();
             container.RegisterType<ILogger, DatabaseLogger>(new PerThreadLifetimeManager());
-            container.RegisterInstance<IScheduler>(new Scheduler());
+            container.RegisterType<IScheduler, Scheduler>(new ContainerControlledLifetimeManager());
         }
     }
 }

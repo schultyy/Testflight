@@ -17,28 +17,33 @@ namespace Testflight.Scheduling
 {
     public class Scheduler : IScheduler
     {
-        [Dependency]
         public IMongoSession Session { get; set; }
 
-        [Dependency]
         public IBuilderCapability BuilderCapability { get; set; }
 
-        [Dependency]
         public IFilesystemProvider FilesystemProvider { get; set; }
 
-        [Dependency]
         public BuildPublisher Publisher { get; set; }
 
-        [Dependency]
         public Builder Builder { get; set; }
 
-        [Dependency]
         public ILogger Logger { get; set; }
 
-        private Dictionary<ObjectId, Task> taskHandles;
+        private readonly Dictionary<ObjectId, Task> taskHandles;
 
-        public Scheduler()
+        public Scheduler(IMongoSession session,
+                        IBuilderCapability builderCapability,
+                        IFilesystemProvider filesystemProvider,
+                        BuildPublisher publisher,
+                        Builder builder,
+                        ILogger logger)
         {
+            Session = session;
+            BuilderCapability = builderCapability;
+            FilesystemProvider = filesystemProvider;
+            Publisher = publisher;
+            Builder = builder;
+            Logger = logger;
             taskHandles = new Dictionary<ObjectId, Task>();
         }
 
@@ -79,6 +84,8 @@ namespace Testflight.Scheduling
                                                            throw new ConfigurationValidationException(message);
                                                        }).ContinueWith(t =>
                                                         {
+                                                            taskHandles.Remove(configurationId);
+
                                                             if (t.Exception == null)
                                                             {
                                                                 Logger.Finished();
@@ -99,12 +106,5 @@ namespace Testflight.Scheduling
                                                })
                                 .ToArray();
         }
-    }
-
-    public class TaskInfo
-    {
-        public bool IsCompleted { get; set; }
-
-        public ObjectId ConfigurationId { get; set; }
     }
 }

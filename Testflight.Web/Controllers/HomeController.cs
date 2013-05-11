@@ -26,14 +26,27 @@ namespace Testflight.Web.Controllers
         public ActionResult Index()
         {
             var projects = new List<ProjectViewModel>();
+            var tasks = scheduler.GetTasks();
 
             foreach (var project in session.GetAll<Project>())
             {
+                Project project1 = project;
                 projects.Add(new ProjectViewModel()
                                  {
                                      Name = project.Name,
                                      Configurations = session.GetAll<Configuration>()
-                                                                .Where(c => c.ProjectId == project.Id).ToArray()
+                                                                .Where(c => c.ProjectId == project1.Id)
+                                                                .Select(c => new ConfigurationViewModel
+                                                                                 {
+                                                                                     Id = c.Id,
+                                                                                     Name = c.Name,
+                                                                                     ProjectId = c.ProjectId,
+                                                                                     IsCompleted = tasks.SingleOrDefault(t => t.ConfigurationId == c.Id) != null ?
+                                                                                                            tasks.Single(t => t.ConfigurationId == c.Id).IsCompleted : true
+                                                                                     //IsCompleted = tasks.SingleOrDefault(t => t.ConfigurationId == c.Id) == null && 
+                                                                                     //                           
+                                                                                 })
+                                                                .ToArray()
                                  });
             }
 
