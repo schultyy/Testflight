@@ -29,6 +29,8 @@ namespace Testflight.Core
                               {
                                   StartInfo = new ProcessStartInfo
                                                   {
+                                                      WindowStyle = ProcessWindowStyle.Hidden,
+                                                      CreateNoWindow = true,
                                                       FileName = Path,
                                                       Arguments = arguments,
                                                       UseShellExecute = false,
