@@ -24,16 +24,112 @@
     position: relative;
 }
 
-#heading {
+#heading
+{
     size: 26px;
-    font-family: 'Arial';   
+    font-family: 'Arial';
 }
 
-.logentry-heading {
+.logentry-heading
+{
     size: 16px;
 }
 
-.logentry-content {
+.logentry-content
+{
     size: 14px;
     font-style: italic;
 }
+
+.build-successfull
+{
+    text-decoration: none;
+    font-size: 16px;
+}
+.build-unsuccessfull
+{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.build-successfull:link
+{
+    color: green;
+}
+/* unvisited link */
+.build-successfull:visited
+{
+    color: green;
+}
+/* visited link */
+.build-successfull:hover
+{
+    color: green;
+}
+/* mouse over link */
+.build-successfull:active
+{
+    color: green;
+}
+/* selected link */
+.build-successfull:link
+{
+    color: green;
+}
+/* unvisited link */
+.build-successfull:visited
+{
+    color: green;
+}
+/* visited link */
+.build-successfull:hover
+{
+    color: green;
+}
+/* mouse over link */
+.build-successfull:active
+{
+    color: green;
+}
+/* selected link */
+
+.build-unsuccessfull:link
+{
+    color: red;
+}
+/* unvisited link */
+.build-unsuccessfull:visited
+{
+    color: red;
+}
+/* visited link */
+.build-unsuccessfull:hover
+{
+    color: red;
+}
+/* mouse over link */
+.build-unsuccessfull:active
+{
+    color: red;
+}
+/* selected link */
+.build-unsuccessfull:link
+{
+    color: red;
+}
+/* unvisited link */
+.build-unsuccessfull:visited
+{
+    color: red;
+}
+/* visited link */
+.build-unsuccessfull:hover
+{
+    color: red;
+}
+/* mouse over link */
+.build-unsuccessfull:active
+{
+    color: red;
+}
+/* selected link */

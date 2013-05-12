@@ -15,7 +15,12 @@
         <div id="report-list">
             @foreach (var report in Model.BuildReports)
             {
-                <a href="#" id="@report.Id">@report.Timestamp</a><br />
+                var linkClass = "build-successfull";
+                if (!report.WasSuccessfull)
+                {
+                    linkClass = "build-unsuccessfull";
+                }
+                <a href="#" id="@report.Id" class="@linkClass">@report.Timestamp</a><br />
             }
         </div>
     </fieldset>
