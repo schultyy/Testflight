@@ -87,11 +87,11 @@ namespace Testflight.Scheduling
 
                                                             if (t.Exception == null)
                                                             {
-                                                                Logger.Finished();
+                                                                Logger.Finished(configurationId);
                                                                 return;
                                                             }
                                                             Logger.Error("General", t.Exception);
-                                                            Logger.FinishedWithErrors();
+                                                            Logger.FinishedWithErrors(configurationId);
                                                         });
             taskHandles.Add(configurationId, taskHandle);
         }

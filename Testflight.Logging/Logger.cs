@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Xml.Serialization;
+using MongoDB.Bson;
 using TestFlight.Model;
 
 namespace Testflight.Logging
@@ -50,8 +51,8 @@ namespace Testflight.Logging
                 Error(component, innerException.Message);
         }
 
-        public abstract void Finished();
+        public abstract void Finished(ObjectId configurationId);
 
-        public abstract void FinishedWithErrors();
+        public abstract void FinishedWithErrors(ObjectId configurationId);
     }
 }

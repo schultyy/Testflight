@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using MongoDB.Bson;
 
 namespace Testflight.Logging
 {
@@ -20,16 +21,16 @@ namespace Testflight.Logging
             }
         }
 
-        public override void Finished()
+        public override void Finished(ObjectId configurationId)
         {
             var logFilename = Path.Combine("Log",
                                                string.Format("{0}.xml", DateTime.Now.ToString().Replace(":", "_")));
             WriteToFile(logFilename);
         }
 
-        public override void FinishedWithErrors()
+        public override void FinishedWithErrors(ObjectId configurationId)
         {
-            Finished();
+            Finished(configurationId);
         }
     }
 }

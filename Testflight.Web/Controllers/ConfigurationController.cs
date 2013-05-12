@@ -125,5 +125,21 @@ namespace Testflight.Web.Controllers
                 return View();
             }
         }
+
+        /// <summary>
+        /// GET
+        /// </summary>
+        /// <param name="configurationId"></param>
+        /// <returns></returns>
+        public ActionResult Report(ObjectId configurationId)
+        {
+            var configuration = session.GetById<Configuration>(configurationId);
+
+            var buildReports = session.GetAll<BuildReport>()
+                                        .Where(c => c.ConfigurationId == configurationId)
+                                        .ToArray();
+
+            return View();
+        }
     }
 }

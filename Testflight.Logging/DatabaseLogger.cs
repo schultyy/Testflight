@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MongoDB.Bson;
 using TestFlight.Model;
 using Testflight.DataAccess;
 
@@ -15,21 +16,22 @@ namespace Testflight.Logging
             this.session = session;
         }
 
-        public override void Finished()
+        public override void Finished(ObjectId configurationId)
         {
-            CreateBuildResult(true);
+            CreateBuildResult(true, configurationId);
         }
 
-        public override void FinishedWithErrors()
+        public override void FinishedWithErrors(ObjectId configurationId)
         {
-            CreateBuildResult(false);
+            CreateBuildResult(false, configurationId);
         }
 
-        private void CreateBuildResult(bool wasSuccessfull)
+        private void CreateBuildResult(bool wasSuccessfull, ObjectId configurationId)
         {
 
             var report = new BuildReport
             {
+                ConfigurationId = configurationId,
                 LogEntries =
                     logEntries.GroupBy(c => c.Component).ToDictionary(c => c.Key, c => c.ToArray()),
                 WasSuccessfull = wasSuccessfull,

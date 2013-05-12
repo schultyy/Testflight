@@ -1,0 +1,43 @@
+﻿@model TestFlight.Model.Configuration
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+<fieldset>
+    <legend>Configuration</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BaseDirectory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BaseDirectory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SolutionFile)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SolutionFile)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Target)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Target)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
