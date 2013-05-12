@@ -1,0 +1,15 @@
+﻿body {
+}
+
+#container {
+    width: 100%;
+}
+#sidebar {
+    width: 300px;
+    float: left;
+}
+
+#content {
+    width: auto;
+    float: right;
+}

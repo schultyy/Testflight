@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using TestFlight.Model;
 using TestFlight.Shared;
 using Testflight.DataAccess;
+using Testflight.Web.Models;
 
 namespace Testflight.Web.Controllers
 {
@@ -138,8 +139,11 @@ namespace Testflight.Web.Controllers
             var buildReports = session.GetAll<BuildReport>()
                                         .Where(c => c.ConfigurationId == configurationId)
                                         .ToArray();
-
-            return View();
+            var reportModel = new ConfigurationDetailViewModel();
+            reportModel.Name = configuration.Name;
+            reportModel.Id = configurationId;
+            reportModel.BuildReports = buildReports;
+            return View(reportModel);
         }
     }
 }

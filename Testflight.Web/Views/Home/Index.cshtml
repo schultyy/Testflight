@@ -32,7 +32,8 @@
                     @project.Name
                 </td>
                 <td>
-                    @configuration.Name
+                    @Html.ActionLink(configuration.Name, "Report", "Configuration", new { configurationId = configuration.Id }, null)
+                    @*                    @configuration.Name*@
                 </td>
                 <td class="build-status">
                     @if (configuration.IsCompleted)

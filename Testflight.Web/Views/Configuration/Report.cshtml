@@ -1,42 +1,29 @@
-﻿@model TestFlight.Model.Configuration
-
+﻿@model Testflight.Web.Models.ConfigurationDetailViewModel
 @{
     ViewBag.Title = "Report";
 }
-
-<h2>Report</h2>
-
-<fieldset>
-    <legend>Configuration</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+@Styles.Render("~/Content/css/Configuration")
+<h2>
+    Report</h2>
+<div id="container">
+    <div id="sidebar">
+        <fieldset>
+            <legend>Build reports</legend>
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+            @foreach (var report in Model.BuildReports)
+            {
+                <p>@report.Timestamp</p>
+            }
+        </fieldset>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
+    <div id="content">
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.BaseDirectory)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.BaseDirectory)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.SolutionFile)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SolutionFile)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Target)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Target)
-    </div>
-</fieldset>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
