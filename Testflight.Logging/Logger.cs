@@ -62,7 +62,7 @@ namespace Testflight.Logging
                                {
                                    Category = Categories.Error,
                                    Component = component,
-                                   Message = exception.Message,
+                                   Message = exception == null ? string.Empty : exception.Message,
                                    TimeStamp = DateTime.Now
                                });
         }
