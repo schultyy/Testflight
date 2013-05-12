@@ -1,17 +1,15 @@
 ﻿@model Testflight.Model.Configuration
-
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
+<h2>
+    Edit</h2>
 @{
     Html.RenderPartial("_Form");
 }
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Details", "Project", new { projectId = Model.ProjectId }, null)
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-

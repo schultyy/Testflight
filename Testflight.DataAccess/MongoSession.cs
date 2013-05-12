@@ -9,9 +9,9 @@ namespace Testflight.DataAccess
 {
     public class MongoSession : IMongoSession
     {
-        private MongoServer server;
+        private readonly MongoServer server;
 
-        private MongoDatabase database;
+        private readonly MongoDatabase database;
 
         public MongoSession()
         {
@@ -29,20 +29,29 @@ namespace Testflight.DataAccess
         {
             if (item == null)
                 throw new ArgumentNullException("item");
-
-            server.Connect();
-
+            
             var collection = database.GetCollection<T>(typeof(T).Name);
             collection.Insert(item);
         }
 
+        public void Update<T>(T item) where T : class
+        {
+            if (item == null)
+                throw new ArgumentNullException("item");
+
+            var collection = database.GetCollection<T>(typeof(T).Name);
+            collection.Save(item);
+        }
+
         public IQueryable<T> GetAll<T>()
+            where T : class
         {
             var result = database.GetCollection<T>(typeof(T).Name).FindAll();
             return result.AsQueryable();
         }
 
         public T GetById<T>(ObjectId id)
+            where T : class
         {
             if (id == null)
                 throw new ArgumentNullException("id");
