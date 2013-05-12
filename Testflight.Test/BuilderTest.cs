@@ -24,7 +24,10 @@ namespace Testflight.Test
             builderMock = new Mock<IBuilderCapability>();
 
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
-                .Returns(() => new BuildResult());
+                .Returns(() => new BuildResult()
+                                   {
+                                       TargetResults = new ITargetResult[] { }
+                                   });
 
             builder = new Builder(loggerMock.Object, builderMock.Object);
         }
@@ -109,7 +112,7 @@ namespace Testflight.Test
 
             builder.Run("Test.sln");
 
-            loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Build"), It.Is<string>(s => s == "Failure")));
+            loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Build"), It.IsAny<Exception>()));
         }
 
         [Test]
@@ -118,7 +121,15 @@ namespace Testflight.Test
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
                 .Returns(() => new BuildResult
                                    {
-                                       ExitCode = 0
+                                       ExitCode = ResultCode.Success,
+                                       TargetResults = new ITargetResult[]
+                                                           {
+                                                               new TargetResult
+                                                                   {
+                                                                       Component = "Build",
+                                                                       Result = ResultCode.Success
+                                                                   }
+                                                           }
                                    });
 
             Assert.IsTrue(builder.Run("Test.sln"));
@@ -130,7 +141,16 @@ namespace Testflight.Test
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
                 .Returns(() => new BuildResult
                 {
-                    ExitCode = ResultCode.Failure
+                    ExitCode = ResultCode.Failure,
+                    TargetResults = new ITargetResult[]
+                                        {
+                                            new TargetResult
+                                                {
+                                                    Exception = new Exception(),
+                                                    Result = ResultCode.Failure,
+                                                    Component = "Build"
+                                                }
+                                        }
                 });
 
             Assert.IsFalse(builder.Run("Test.sln"));

@@ -27,7 +27,8 @@ namespace Testflight.Logging
                                {
                                    Category = Categories.Error,
                                    Message = errorMessage,
-                                   Component = component
+                                   Component = component,
+                                   TimeStamp = DateTime.Now
                                });
         }
 
@@ -41,14 +42,29 @@ namespace Testflight.Logging
                                {
                                    Category = Categories.Info,
                                    Message = infoMessage,
-                                   Component = component
+                                   Component = component,
+                                   TimeStamp = DateTime.Now
                                });
         }
 
         public void Error(string component, AggregateException exceptions)
         {
             foreach (var innerException in exceptions.InnerExceptions)
-                Error(component, innerException.Message);
+                Error(component, innerException);
+        }
+
+        public void Error(string component, Exception exception)
+        {
+            if (string.IsNullOrEmpty(component))
+                throw new ArgumentNullException("component");
+
+            logEntries.Add(new LogEntry
+                               {
+                                   Category = Categories.Error,
+                                   Component = component,
+                                   Message = exception.Message,
+                                   TimeStamp = DateTime.Now
+                               });
         }
 
         public abstract void Finished(ObjectId configurationId);

@@ -10,5 +10,6 @@ namespace Testflight.Logging
         void Error(string component, AggregateException exceptions);
         void Finished(ObjectId configurationId);
         void FinishedWithErrors(ObjectId configurationId);
+        void Error(string component, Exception exception);
     }
 }

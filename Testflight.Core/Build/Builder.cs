@@ -28,13 +28,21 @@ namespace Testflight.Core
 
             var results = BuilderCapability.Call(solutionFile, configuration);
 
-            //if (!string.IsNullOrEmpty(results.StdOut))
-            //    Logger.Info("Build", results.StdOut);
+            foreach (var targetResult in results.TargetResults)
+            {
+                switch (targetResult.Result)
+                {
+                    case ResultCode.Failure:
+                        Logger.Error(targetResult.Component, targetResult.Exception);
+                        break;
+                    case ResultCode.Success:
+                    case ResultCode.Skipped:
+                        Logger.Info(targetResult.Component, targetResult.Result.ToString());
+                        break;
+                }
+            }
 
-            //if (!string.IsNullOrEmpty(results.StdError))
-            //    Logger.Error("Build", results.StdError);
-
-            return results.ExitCode == 0;
+            return results.ExitCode == ResultCode.Success;
         }
     }
 }
