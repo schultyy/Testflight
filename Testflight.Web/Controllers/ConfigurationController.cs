@@ -142,7 +142,7 @@ namespace Testflight.Web.Controllers
             var reportModel = new ConfigurationDetailViewModel();
             reportModel.Name = configuration.Name;
             reportModel.Id = configurationId;
-            reportModel.BuildReports = buildReports;
+            reportModel.BuildReports = buildReports.OrderByDescending(c => c.Timestamp).ToArray();
             return View(reportModel);
         }
 
