@@ -5,7 +5,7 @@ using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
 using Testflight.Shared;
 
-namespace Testflight.Core
+namespace Testflight.Core.Build
 {
     public class MSBuild : IBuilderCapability
     {

@@ -1,6 +1,8 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Testflight.Core;
+using Testflight.Core.Build;
+using Testflight.Core.Publish;
 using Testflight.DataAccess;
 using Testflight.Logging;
 using Testflight.Scheduling;

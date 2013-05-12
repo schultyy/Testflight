@@ -1,7 +1,6 @@
 using System;
-using Testflight.Core.Build;
 
-namespace Testflight.Core
+namespace Testflight.Core.Build
 {
     public interface IBuildResult
     {

@@ -1,6 +1,6 @@
 ﻿using Testflight.Shared;
 
-namespace Testflight.Core
+namespace Testflight.Core.Build
 {
     public interface IBuilderCapability
     {

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
-namespace Testflight.Core
+namespace Testflight.Core.Publish
 {
     public class FilesystemProvider : IFilesystemProvider
     {

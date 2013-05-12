@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Testflight.Core
+﻿namespace Testflight.Core.Publish
 {
     public interface IFilesystemProvider
     {

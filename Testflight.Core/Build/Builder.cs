@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Testflight.Shared;
 using Testflight.Logging;
 
-namespace Testflight.Core
+namespace Testflight.Core.Build
 {
     public class Builder
     {

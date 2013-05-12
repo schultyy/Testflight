@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using MongoDB.Bson;
+using Testflight.Core.Build;
+using Testflight.Core.Publish;
 using Testflight.Model;
 using Testflight.Core;
 using Testflight.DataAccess;
