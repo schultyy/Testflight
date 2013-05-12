@@ -1,3 +1,5 @@
+using Testflight.Core.Build;
+
 namespace Testflight.Core
 {
     public class BuildResult : IBuildResult

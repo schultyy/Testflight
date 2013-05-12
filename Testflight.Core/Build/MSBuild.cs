@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
 using TestFlight.Shared;
@@ -20,16 +18,6 @@ namespace Testflight.Core
 
         public IBuildResult Call(string solutionFile, BuildConfiguration buildConfiguration)
         {
-            //string projectFileName = @"...\ConsoleApplication3\ConsoleApplication3.sln";
-            //ProjectCollection pc = new ProjectCollection();
-            //Dictionary<string, string> GlobalProperty = new Dictionary<string, string>();
-            //GlobalProperty.Add("Configuration", "Debug");
-            //GlobalProperty.Add("Platform", "x86");
-
-            //BuildRequestData BuidlRequest = new BuildRequestData(projectFileName, GlobalProperty, null, new string[] { "Build" }, null);
-
-            //BuildResult buildResult = BuildManager.DefaultBuildManager.Build(new BuildParameters(pc), BuidlRequest);
-
             var projectCollection = new ProjectCollection();
             var properties = new Dictionary<string, string> { { "Configuration", buildConfiguration.ToString() } };
 
@@ -37,34 +25,45 @@ namespace Testflight.Core
 
             var result = BuildManager.DefaultBuildManager.Build(new BuildParameters(projectCollection), buildRequest);
 
-            return null;
+            return new BuildResult
+                       {
+                           ExitCode = Convert(result.OverallResult),
+                           TargetResults = result.ResultsByTarget.Select(c => new Build.TargetResult
+                                                                                  {
+                                                                                      Component = c.Key,
+                                                                                      Exception = c.Value.Exception,
+                                                                                      Result = Convert(c.Value.ResultCode)
+                                                                                  })
+                                                                                  .ToArray()
+                       };
+        }
 
-            //if (string.IsNullOrEmpty(solutionFile))
-            //    throw new ArgumentNullException("solutionFile");
+        private ResultCode Convert(TargetResultCode buildResultCode)
+        {
+            switch (buildResultCode)
+            {
+                case TargetResultCode.Skipped:
+                    return ResultCode.Skipped;
+                case TargetResultCode.Success:
+                    return ResultCode.Success;
+                case TargetResultCode.Failure:
+                    return ResultCode.Failure;
+                default:
+                    throw new ArgumentOutOfRangeException("buildResultCode");
+            }
+        }
 
-            //var results = new BuildResult();
-
-            //var arguments = String.Join(" ", solutionFile, string.Format("/p:Configuration={0}", buildConfiguration));
-
-            //var process = new Process()
-            //                  {
-            //                      StartInfo = new ProcessStartInfo
-            //                                      {
-            //                                          //WindowStyle = ProcessWindowStyle.Hidden,
-            //                                          //CreateNoWindow = true,
-            //                                          FileName = Path,
-            //                                          Arguments = arguments,
-            //                                          UseShellExecute = false,
-            //                                          RedirectStandardError = true,
-            //                                          RedirectStandardOutput = true
-            //                                      }
-            //                  };
-
-            //process.Start();
-            //results.StdError = process.StandardError.ReadToEnd();
-            //results.StdOut = process.StandardOutput.ReadToEnd();
-            //results.ExitCode = process.ExitCode;
-            //return results;
+        private ResultCode Convert(BuildResultCode buildResultCode)
+        {
+            switch (buildResultCode)
+            {
+                case BuildResultCode.Success:
+                    return ResultCode.Success;
+                case BuildResultCode.Failure:
+                    return ResultCode.Failure;
+                default:
+                    throw new ArgumentOutOfRangeException("buildResultCode");
+            }
         }
     }
 }
