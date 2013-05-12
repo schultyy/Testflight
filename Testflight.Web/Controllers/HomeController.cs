@@ -42,11 +42,13 @@ namespace Testflight.Web.Controllers
                                                                                      Name = c.Name,
                                                                                      ProjectId = c.ProjectId,
                                                                                      IsCompleted = tasks.SingleOrDefault(t => t.ConfigurationId == c.Id) != null ?
-                                                                                                            tasks.Single(t => t.ConfigurationId == c.Id).IsCompleted : true
-                                                                                     //IsCompleted = tasks.SingleOrDefault(t => t.ConfigurationId == c.Id) == null && 
-                                                                                     //                           
+                                                                                                            tasks.Single(t => t.ConfigurationId == c.Id).IsCompleted : true,
+                                                                                     WasLastBuildSuccessfull = session.GetAll<BuildReport>()
+                                                                                            .Where(b => b.ConfigurationId == c.Id)
+                                                                                            .OrderByDescending(b => b.Timestamp)
+                                                                                            .First().WasSuccessfull
                                                                                  })
-                                                                .ToArray()
+                                                                .ToArray(),
                                  });
             }
 

@@ -19,6 +19,9 @@
                 Build status
             </th>
             <th>
+                Was last build successfull?
+            </th>
+            <th>
             </th>
         </tr>
     </thead>
@@ -46,6 +49,9 @@
                         <p>
                             Running</p>
                     }
+                </td>
+                <td>
+                    @configuration.WasLastBuildSuccessfull
                 </td>
                 <td>
                     <a href="#" class="query-build-link" id="@configuration.Id">Query build</a>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
+using Microsoft.Build.Framework;
+using Microsoft.Build.Logging;
 using Testflight.Shared;
 
 namespace Testflight.Core.Build

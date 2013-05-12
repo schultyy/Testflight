@@ -23,5 +23,7 @@ namespace Testflight.Web.Models
         public string Name { get; set; }
 
         public bool IsCompleted { get; set; }
+
+        public bool WasLastBuildSuccessfull { get; set; }
     }
 }
