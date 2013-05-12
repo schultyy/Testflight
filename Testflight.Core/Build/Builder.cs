@@ -28,11 +28,11 @@ namespace Testflight.Core
 
             var results = BuilderCapability.Call(solutionFile, configuration);
 
-            if (!string.IsNullOrEmpty(results.StdOut))
-                Logger.Info("Build", results.StdOut);
+            //if (!string.IsNullOrEmpty(results.StdOut))
+            //    Logger.Info("Build", results.StdOut);
 
-            if (!string.IsNullOrEmpty(results.StdError))
-                Logger.Error("Build", results.StdError);
+            //if (!string.IsNullOrEmpty(results.StdError))
+            //    Logger.Error("Build", results.StdError);
 
             return results.ExitCode == 0;
         }

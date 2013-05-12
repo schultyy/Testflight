@@ -3,6 +3,7 @@ using Moq;
 using NUnit.Framework;
 using TestFlight.Shared;
 using Testflight.Core;
+using Testflight.Core.Build;
 using Testflight.Logging;
 
 namespace Testflight.Test
@@ -71,14 +72,17 @@ namespace Testflight.Test
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
                 .Returns(() => new BuildResult
                                    {
-                                       StdOut = "Stdout"
+                                       TargetResults = new ITargetResult[]
+                                                           {
+                                                               new TargetResult(){Component = "Build"}
+                                                           }
                                    });
 
             #endregion
 
             builder.Run("Test.sln");
 
-            loggerMock.Verify(c => c.Info(It.IsAny<string>(), It.Is<string>(s => s == "Stdout")));
+            loggerMock.Verify(c => c.Info(It.Is<string>(s => s == "Build"), It.IsAny<string>()));
             loggerMock.Verify(c => c.Error(It.IsAny<string>(), It.IsAny<string>()), Times.Never());
         }
 
@@ -90,14 +94,22 @@ namespace Testflight.Test
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
                 .Returns(() => new BuildResult
                                    {
-                                       StdError = "Error"
+                                       TargetResults = new ITargetResult[]
+                                                           {
+                                                               new TargetResult()
+                                                               {
+                                                                   Result = ResultCode.Failure,
+                                                                   Component = "Build",
+                                                                   Exception = new Exception("Failure")
+                                                               }
+                                                           }
                                    });
 
             #endregion
 
             builder.Run("Test.sln");
 
-            loggerMock.Verify(c => c.Error(It.IsAny<string>(), It.Is<string>(s => s == "Error")));
+            loggerMock.Verify(c => c.Error(It.Is<string>(s => s == "Build"), It.Is<string>(s => s == "Failure")));
         }
 
         [Test]
@@ -118,7 +130,7 @@ namespace Testflight.Test
             builderMock.Setup(c => c.Call(It.IsAny<string>(), It.IsAny<BuildConfiguration>()))
                 .Returns(() => new BuildResult
                 {
-                    ExitCode = 5
+                    ExitCode = ResultCode.Failure
                 });
 
             Assert.IsFalse(builder.Run("Test.sln"));

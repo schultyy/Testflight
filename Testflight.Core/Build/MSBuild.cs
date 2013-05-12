@@ -31,7 +31,7 @@ namespace Testflight.Core
             //BuildResult buildResult = BuildManager.DefaultBuildManager.Build(new BuildParameters(pc), BuidlRequest);
 
             var projectCollection = new ProjectCollection();
-            var properties = new Dictionary<string, string> {{"Configuration", buildConfiguration.ToString()}};
+            var properties = new Dictionary<string, string> { { "Configuration", buildConfiguration.ToString() } };
 
             var buildRequest = new BuildRequestData(solutionFile, properties, null, new[] { "Build" }, null);
 

@@ -44,6 +44,7 @@
     <Compile Include="..\SolutionProperties.cs">
       <Link>SolutionProperties.cs</Link>
     </Compile>
+    <Compile Include="Build\TargetResult.cs" />
     <Compile Include="Publish\BuildPublisher.cs" />
     <Compile Include="Build\BuildResult.cs" />
     <Compile Include="Build\Builder.cs" />
