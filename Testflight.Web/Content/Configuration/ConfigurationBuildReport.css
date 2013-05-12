@@ -1,11 +1,39 @@
-﻿body {
+﻿body
+{
 }
 
-#container {
+#container
+{
     width: 100%;
 }
-#sidebar {
+#sidebar
+{
     width: 300px;
     float: left;
     margin-top: 15px;
+}
+
+#details
+{
+    float: left;
+    width: auto;
+}
+#link-menu
+{
+    bottom: 0;
+    position: relative;
+}
+
+#heading {
+    size: 26px;
+    font-family: 'Arial';   
+}
+
+.logentry-heading {
+    size: 16px;
+}
+
+.logentry-content {
+    size: 14px;
+    font-style: italic;
 }
