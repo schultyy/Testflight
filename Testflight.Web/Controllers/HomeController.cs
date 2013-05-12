@@ -43,7 +43,7 @@ namespace Testflight.Web.Controllers
                                                                                      ProjectId = c.ProjectId,
                                                                                      IsCompleted = tasks.SingleOrDefault(t => t.ConfigurationId == c.Id) != null ?
                                                                                                             tasks.Single(t => t.ConfigurationId == c.Id).IsCompleted : true,
-                                                                                     WasLastBuildSuccessfull = session.GetAll<BuildReport>()
+                                                                                     WasLastBuildSuccessful = session.GetAll<BuildReport>()
                                                                                             .Where(b => b.ConfigurationId == c.Id)
                                                                                             .OrderByDescending(b => b.Timestamp)
                                                                                             .First().WasSuccessfull
