@@ -1,28 +1,24 @@
 ﻿@model Testflight.Web.Models.ConfigurationDetailViewModel
 @{
-    ViewBag.Title = "Report";
+    ViewBag.Title = "Report - " + Model.Name;
 }
-@Styles.Render("~/Content/css/Configuration")
-<h2>
-    Report</h2>
-<div id="container">
-    <div id="sidebar">
-        <fieldset>
-            <legend>Build reports</legend>
-            <div class="display-label">
-                @Html.DisplayNameFor(model => model.Name)
-            </div>
-            <div class="display-field">
-                @Html.DisplayFor(model => model.Name)
-            </div>
+@section styles{
+    @Styles.Render(Url.Content("/Content/Configuration/ConfigurationBuildReport.css"))
+}
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("/Scripts/BuildReport.js")"></script>
+}
+<h2>@Model.Name</h2>
+<div id="sidebar">
+    <fieldset>
+        <legend>Build reports</legend>
+        <div id="report-list">
             @foreach (var report in Model.BuildReports)
             {
-                <p>@report.Timestamp</p>
+                <a href="#" id="@report.Id">@report.Timestamp</a><br />
             }
-        </fieldset>
-    </div>
-    <div id="content">
-    </div>
+        </div>
+    </fieldset>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |

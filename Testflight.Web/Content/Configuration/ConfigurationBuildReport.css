@@ -7,9 +7,5 @@
 #sidebar {
     width: 300px;
     float: left;
-}
-
-#content {
-    width: auto;
-    float: right;
+    margin-top: 15px;
 }

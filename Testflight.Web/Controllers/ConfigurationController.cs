@@ -145,5 +145,12 @@ namespace Testflight.Web.Controllers
             reportModel.BuildReports = buildReports;
             return View(reportModel);
         }
+
+        public ActionResult ReportDetails(ObjectId reportId)
+        {
+            var buildReport = session.GetById<BuildReport>(reportId);
+
+            return Json(buildReport, JsonRequestBehavior.AllowGet);
+        }
     }
 }
