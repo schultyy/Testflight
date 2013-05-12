@@ -1,6 +1,5 @@
 ﻿@using Testflight.Web.Extensions
 @model Testflight.Model.Configuration
-
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -36,13 +35,16 @@
             @Html.ValidationMessageFor(model => model.Target)
         </div>
         <div class="editor-field">
+            @Html.HiddenFor(model => model.ProjectId)
+        </div>
+        <div class="editor-field">
             @Html.LabelFor(model => model.BuildConfiguration)
         </div>
         <div class="editor-field">
             @Html.EnumDropDownListFor(model => model.BuildConfiguration, "Please select a build configuration")
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
