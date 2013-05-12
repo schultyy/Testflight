@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MongoDB.Bson;
-using TestFlight.Model;
+using Testflight.Model;
 using Testflight.DataAccess;
 
 namespace Testflight.Logging

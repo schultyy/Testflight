@@ -8,8 +8,8 @@
     <ProjectGuid>{EEF66475-7A21-46D9-B734-076F0A87E0CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestFlight.Shared</RootNamespace>
-    <AssemblyName>TestFlight.Shared</AssemblyName>
+    <RootNamespace>Testflight.Shared</RootNamespace>
+    <AssemblyName>Testflight.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

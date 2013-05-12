@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using TestFlight.Shared;
+using Testflight.Shared;
 
-namespace TestFlight.Model
+namespace Testflight.Model
 {
     public class Configuration
     {

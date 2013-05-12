@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
-using TestFlight.Shared;
+using Testflight.Shared;
 
 namespace Testflight.Core
 {

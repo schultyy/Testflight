@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
-using TestFlight.Model;
+using Testflight.Model;
 using Testflight.Core;
 using Testflight.Logging;
 

@@ -1,4 +1,4 @@
-﻿using TestFlight.Shared;
+﻿using Testflight.Shared;
 
 namespace Testflight.Core
 {

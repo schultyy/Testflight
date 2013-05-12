@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using MongoDB.Bson;
-using TestFlight.Model;
+using Testflight.Model;
 using Testflight.DataAccess;
 
 namespace Testflight.Web.Controllers

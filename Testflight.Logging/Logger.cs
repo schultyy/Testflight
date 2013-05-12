@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Xml.Serialization;
 using MongoDB.Bson;
-using TestFlight.Model;
+using Testflight.Model;
 
 namespace Testflight.Logging
 {

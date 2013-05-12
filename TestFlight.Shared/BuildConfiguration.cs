@@ -1,4 +1,4 @@
-namespace TestFlight.Shared
+namespace Testflight.Shared
 {
     public enum BuildConfiguration
     {

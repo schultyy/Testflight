@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TestFlight.Shared;
+using Testflight.Shared;
 using Testflight.Logging;
 
 namespace Testflight.Core

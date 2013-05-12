@@ -1,4 +1,4 @@
-namespace TestFlight.Model
+namespace Testflight.Model
 {
     public enum Categories
     {
