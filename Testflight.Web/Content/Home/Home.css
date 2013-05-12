@@ -1,0 +1,11 @@
+﻿#configuration-table, td
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#configuration-table, th
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}

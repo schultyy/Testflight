@@ -2,11 +2,15 @@
 @{
     ViewBag.Title = "Home";
 }
+@section styles
+{
+    @Styles.Render(Url.Content("/Content/Home/Home.css"))
+}
 @section scripts
 {
     <script type="text/javascript" src="@Url.Content("/Scripts/Home.js")"></script>
 }
-<table>
+<table id="configuration-table">
     <thead>
         <tr>
             <th>
