@@ -365,6 +365,9 @@
   <ItemGroup>
     <Content Include="Views\Configuration\Report.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Configuration\_Edit.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
