@@ -29,7 +29,7 @@ namespace Testflight.DataAccess
         {
             if (item == null)
                 throw new ArgumentNullException("item");
-            
+
             var collection = database.GetCollection<T>(typeof(T).Name);
             collection.Insert(item);
         }
@@ -57,6 +57,12 @@ namespace Testflight.DataAccess
                 throw new ArgumentNullException("id");
 
             return database.GetCollection<T>(typeof(T).Name).FindOne(Query.EQ("_id", id));
+        }
+
+        public void Delete<T>(ObjectId id)
+                where T : class
+        {
+            database.GetCollection<T>(typeof(T).Name).Remove(Query.EQ("_id", id));
         }
     }
 }

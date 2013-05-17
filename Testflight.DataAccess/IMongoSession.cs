@@ -16,5 +16,8 @@ namespace Testflight.DataAccess
 
         T GetById<T>(ObjectId id)
             where T : class;
+
+        void Delete<T>(ObjectId id)
+            where T : class;
     }
 }

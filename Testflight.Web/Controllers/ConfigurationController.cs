@@ -120,26 +120,26 @@ namespace Testflight.Web.Controllers
         //
         // GET: /Configuration/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(ObjectId configurationId)
         {
-            return View();
+            var configuration = session.GetById<Configuration>(configurationId);
+            return View(configuration);
         }
 
         //
         // POST: /Configuration/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Configuration configuration)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                session.Delete<Configuration>(configuration.Id);
+                return RedirectToAction("Details", "Project", new { id = configuration.ProjectId });
             }
             catch
             {
-                return View();
+                return View(configuration);
             }
         }
 
