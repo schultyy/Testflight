@@ -130,16 +130,18 @@ namespace Testflight.Web.Controllers
         // POST: /Configuration/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(Configuration configuration)
+        public ActionResult Delete(ObjectId configurationId, FormCollection collection)
         {
             try
             {
-                session.Delete<Configuration>(configuration.Id);
-                return RedirectToAction("Details", "Project", new { id = configuration.ProjectId });
+                var projectId = session.GetById<Configuration>(configurationId).ProjectId;
+
+                session.Delete<Configuration>(configurationId);
+                return RedirectToAction("Details", "Project", new { id = projectId });
             }
             catch
             {
-                return View(configuration);
+                return View();
             }
         }
 

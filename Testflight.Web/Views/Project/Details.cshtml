@@ -16,12 +16,24 @@
     <div class="display-label">
         <p>
             Configurations</p>
-        <ul>
+        <table>
+            <thead>
+                <th>
+                    Configuration name
+                </th>
+                <th>
+                </th>
+            </thead>
             @foreach (Configuration configuration in ViewBag.ProjectConfigurations)
             {
-                <li>@Html.ActionLink(configuration.Name, "Edit", "Configuration", new { configurationId = configuration.Id }, null)</li>
+                <tr>
+                    <td>@Html.ActionLink(configuration.Name, "Edit", "Configuration", new { configurationId = configuration.Id }, null)
+                    </td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Configuration", new { configurationId = configuration.Id }, null)
+                    </td>
+                </tr>
             }
-        </ul>
+        </table>
     </div>
 </fieldset>
 <p>
