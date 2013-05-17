@@ -136,6 +136,10 @@ namespace Testflight.Web.Controllers
             {
                 var projectId = session.GetById<Configuration>(configurationId).ProjectId;
 
+                foreach (
+                    var buildReport in session.GetAll<BuildReport>().Where(c => c.ConfigurationId == configurationId))
+                    session.Delete<BuildReport>(buildReport.Id);
+
                 session.Delete<Configuration>(configurationId);
                 return RedirectToAction("Details", "Project", new { id = projectId });
             }
