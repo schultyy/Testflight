@@ -25,8 +25,8 @@ namespace Testflight.Web.Controllers
 
         public ActionResult Create(ObjectId projectId)
         {
-            ViewBag.ProjectId = projectId;
-
+            //ViewBag.ProjectId = projectId;
+            var configuration = new Configuration { ProjectId = projectId };
             var items = new List<SelectListItem>
                             {
                                 new SelectListItem
@@ -42,7 +42,7 @@ namespace Testflight.Web.Controllers
                             };
 
             ViewBag.BuildConfigurations = items;
-            return View();
+            return View(configuration);
         }
 
         //
