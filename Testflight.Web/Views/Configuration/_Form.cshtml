@@ -1,0 +1,53 @@
+﻿@using Testflight.Web.Extensions
+@model Testflight.Model.Configuration
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Configuration</legend>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.Id)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BaseDirectory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BaseDirectory)
+            @Html.ValidationMessageFor(model => model.BaseDirectory)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SolutionFile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SolutionFile)
+            @Html.ValidationMessageFor(model => model.SolutionFile)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Target)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Target)
+            @Html.ValidationMessageFor(model => model.Target)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.ProjectId)
+        </div>
+        <div class="editor-field">
+            @Html.LabelFor(model => model.BuildConfiguration)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownListFor(model => model.BuildConfiguration, "Please select a build configuration")
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}

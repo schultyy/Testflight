@@ -8,7 +8,16 @@ namespace Testflight.DataAccess
         void Insert<T>(T item)
             where T : class;
 
-        IQueryable<T> GetAll<T>();
-        T GetById<T>(ObjectId id);
+        void Update<T>(T item)
+            where T : class;
+
+        IQueryable<T> GetAll<T>()
+            where T : class;
+
+        T GetById<T>(ObjectId id)
+            where T : class;
+
+        void Delete<T>(ObjectId id)
+            where T : class;
     }
 }

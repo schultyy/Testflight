@@ -21,34 +21,28 @@ namespace Testflight.Web.Controllers
         }
 
         //
-        // GET: /Configuration/
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        //
-        // GET: /Configuration/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
         // GET: /Configuration/Create
 
         public ActionResult Create(ObjectId projectId)
         {
-            ViewBag.ProjectId = projectId;
+            //ViewBag.ProjectId = projectId;
+            var configuration = new Configuration { ProjectId = projectId };
+            var items = new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                    {
+                                        Text = BuildConfiguration.Debug.ToString(),
+                                        Value = BuildConfiguration.Debug.ToString()
+                                    },
+                                new SelectListItem
+                                    {
+                                        Text = BuildConfiguration.Release.ToString(),
+                                        Value = BuildConfiguration.Release.ToString()
+                                    }
+                            };
 
-            var items = new List<SelectListItem>();
-
-            items.Add(new SelectListItem { Text = BuildConfiguration.Debug.ToString(), Value = BuildConfiguration.Debug.ToString() });
-            items.Add(new SelectListItem { Text = BuildConfiguration.Release.ToString(), Value = BuildConfiguration.Release.ToString() });
             ViewBag.BuildConfigurations = items;
-            return View();
+            return View(configuration);
         }
 
         //
@@ -71,55 +65,83 @@ namespace Testflight.Web.Controllers
             }
             catch
             {
-                return View();
+                return View(configuration);
             }
         }
 
         //
         // GET: /Configuration/Edit/5
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(ObjectId configurationId)
         {
-            return View();
+            var config = session.GetById<Configuration>(configurationId);
+
+            var items = new List<SelectListItem>
+                            {
+                                new SelectListItem
+                                    {
+                                        Text = BuildConfiguration.Debug.ToString(),
+                                        Value = BuildConfiguration.Debug.ToString()
+                                    },
+                                new SelectListItem
+                                    {
+                                        Text = BuildConfiguration.Release.ToString(),
+                                        Value = BuildConfiguration.Release.ToString()
+                                    }
+                            };
+
+            ViewBag.BuildConfigurations = items;
+
+            return View(config);
         }
 
         //
         // POST: /Configuration/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Configuration configuration)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    session.Update(configuration);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Details", "Project", new { id = configuration.ProjectId });
+                }
+                return View(configuration);
             }
             catch
             {
-                return View();
+                return View(configuration);
             }
         }
 
         //
         // GET: /Configuration/Delete/5
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(ObjectId configurationId)
         {
-            return View();
+            var configuration = session.GetById<Configuration>(configurationId);
+            return View(configuration);
         }
 
         //
         // POST: /Configuration/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(ObjectId configurationId, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var projectId = session.GetById<Configuration>(configurationId).ProjectId;
 
-                return RedirectToAction("Index");
+                foreach (
+                    var buildReport in session.GetAll<BuildReport>().Where(c => c.ConfigurationId == configurationId))
+                    session.Delete<BuildReport>(buildReport.Id);
+
+                session.Delete<Configuration>(configurationId);
+                return RedirectToAction("Details", "Project", new { id = projectId });
             }
             catch
             {

@@ -1,4 +1,5 @@
-﻿@model Testflight.Model.Project
+﻿@using Testflight.Model
+@model Testflight.Model.Project
 @{
     ViewBag.Title = "Details";
 }
@@ -15,12 +16,24 @@
     <div class="display-label">
         <p>
             Configurations</p>
-        <ul>
-            @foreach (var configuration in ViewBag.ProjectConfigurations)
+        <table>
+            <thead>
+                <th>
+                    Configuration name
+                </th>
+                <th>
+                </th>
+            </thead>
+            @foreach (Configuration configuration in ViewBag.ProjectConfigurations)
             {
-                <li>@configuration.Name</li>    
+                <tr>
+                    <td>@Html.ActionLink(configuration.Name, "Edit", "Configuration", new { configurationId = configuration.Id }, null)
+                    </td>
+                    <td>@Html.ActionLink("Delete", "Delete", "Configuration", new { configurationId = configuration.Id }, null)
+                    </td>
+                </tr>
             }
-        </ul>
+        </table>
     </div>
 </fieldset>
 <p>

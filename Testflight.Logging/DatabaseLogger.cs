@@ -34,7 +34,7 @@ namespace Testflight.Logging
                 ConfigurationId = configurationId,
                 LogEntries =
                     logEntries.GroupBy(c => c.Component).ToDictionary(c => c.Key, c => c.ToArray()),
-                WasSuccessfull = wasSuccessfull,
+                WasSuccessful = wasSuccessfull,
                 Timestamp = DateTime.Now
             };
             session.Insert(report);

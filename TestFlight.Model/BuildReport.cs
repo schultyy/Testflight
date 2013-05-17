@@ -14,7 +14,7 @@ namespace Testflight.Model
 
         public Dictionary<string, LogEntry[]> LogEntries { get; set; }
 
-        public bool WasSuccessfull { get; set; }
+        public bool WasSuccessful { get; set; }
 
         public DateTime Timestamp { get; set; }
     }

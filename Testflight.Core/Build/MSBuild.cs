@@ -11,11 +11,8 @@ namespace Testflight.Core.Build
 {
     public class MSBuild : IBuilderCapability
     {
-        public string Path { get; set; }
-
         public MSBuild()
         {
-            Path = "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\MSBuild.exe";
         }
 
         public IBuildResult Call(string solutionFile, BuildConfiguration buildConfiguration)
